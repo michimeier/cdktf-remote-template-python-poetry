@@ -3,10 +3,11 @@ name = "{{ $base }}"
 version = "0.1.0"
 description = ""
 authors = []
+readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.12"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

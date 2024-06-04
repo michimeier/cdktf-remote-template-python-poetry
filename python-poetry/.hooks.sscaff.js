@@ -31,13 +31,13 @@ exports.post = options => {
 
   execSync('poetry install', { stdio: 'inherit' });
   execSync(`poetry add ${pypi_cdktf}`, { stdio: 'inherit' });
-  chmodSync('main.py', '700');
+  chmodSync(`${baseName}/__init__.py`, '700');
 
   console.log(readFileSync('./help', 'utf-8'));
 };
 
 function terraformCloudConfig(baseName, organizationName, workspaceName) {
-  template = readFileSync('./main.py', 'utf-8');
+  template = readFileSync(`./${baseName}/__init__.py`, 'utf-8');
 
   const templateWithImports = template.replace(`from cdktf import App, TerraformStack`,
     `from cdktf import App, TerraformStack, RemoteBackend, NamedRemoteWorkspace`)
@@ -49,5 +49,5 @@ RemoteBackend(stack,
   workspaces=NamedRemoteWorkspace('${workspaceName}')
 )`);
 
-  writeFileSync('./main.py', result, 'utf-8');
+  writeFileSync(`./${baseName}/__init__.py`, result, 'utf-8');
 }

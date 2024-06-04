@@ -1,6 +1,6 @@
 {
   "language": "python",
-  "app": "poetry run python main.py",
+  "app": "poetry run python {{ $base }}",
   "projectId": "{{projectId}}",
   "sendCrashReports": "{{sendCrashReports}}",
   "terraformProviders": [],
