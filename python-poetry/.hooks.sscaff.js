@@ -31,7 +31,7 @@ exports.post = options => {
 
   execSync('poetry install', { stdio: 'inherit' });
   execSync(`poetry add ${pypi_cdktf}`, { stdio: 'inherit' });
-  chmodSync(`${baseName}/__init__.py`, '700');
+  chmodSync(`${options.$base}/__init__.py`, '700');
 
   console.log(readFileSync('./help', 'utf-8'));
 };
